@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de Prédiction</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 2.5rem;
+            color: #4CAF50;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px 0;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .prediction-message {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            max-width: 80%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .disease-message {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #4CAF50; /* Same as site theme */
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            max-width: 80%;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .disease-message.healthy {
+            background: #56ab2f; /* Green for healthy */
+            border-color: #56ab2f;
+        }
+
+        .disease-message.diabetes {
+            background: #56ab2f; /* Red for diabetes */
+            border-color: #56ab2f;
+        }
+
+        .disease-message.anemia {
+            background: #36d1dc; /* Blue for anemia */
+            border-color: #36d1dc;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Résultats de Prédiction</h1>
+
+
+
+    <div class="disease-message diabetes">
+        <p>Prediction: {{ prediction }}</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Attribut</th>
+                <th>Valeur</th>
+            </tr>
+        </thead>
+        <tbody>
+         {% for test, value in results.items() %}
+            <tr>
+                <td>{{ test }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="button-container">
+        <button onclick="window.location.href='/predict_again'">Refaire une prédiction</button>
+        <button onclick="window.location.href='/maladie'">Retour à l'accueil</button>
+    </div>
+</body>
+</html>

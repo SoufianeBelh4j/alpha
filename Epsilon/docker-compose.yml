@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  module1:
+    build:
+      context: ./module1
+    container_name: module1
+    ports:
+      - "5001:5001"
+
+  module2:
+    build:
+      context: ./module2
+    container_name: module2
+    ports:
+      - "5002:5002"
+
+  module3:
+    build:
+      context: ./module3
+    container_name: module3
+    ports:
+      - "5003:5003"
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - module1
+      - module2
+      - module3

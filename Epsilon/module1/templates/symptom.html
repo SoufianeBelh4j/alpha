@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter Symptômes</title>
+    <style>
+        /* General reset for consistent styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #export {
+            background-color: #2196F3;
+            margin-top: 10px;
+        }
+
+        #export:hover {
+            background-color: #1976D2;
+        }
+
+        #predict {
+            background-color: #FF9800;
+            margin-top: 10px;
+        }
+
+        #predict:hover {
+            background-color: #F57C00;
+        }
+    </style>
+</head>
+<body>
+    <form id="symptomForm" action="/symptom" method="POST">
+        <h1>Remplir les attributs du patient</h1>
+        <label for="att1">Glucose:</label>
+        <input type="text" id="att1" name="att1" placeholder="Glucose" required>
+
+        <label for="att2">Cholesterol:</label>
+        <input type="text" id="att2" name="att2" placeholder="Cholesterol" required>
+
+        <label for="att3">White Blood Cells:</label>
+        <input type="text" id="att3" name="att3" placeholder="WBC" required>
+
+        <label for="att4">Red Blood Cells:</label>
+        <input type="text" id="att4" name="att4" placeholder="RBC value" required>
+
+        <label for="att5">Mean Corpuscular Volume:</label>
+        <input type="text" id="att5" name="att5" placeholder="MCV" required>
+
+        <button type="submit">Ajouter</button>
+        <button type="button" id="export">Exporter les données</button>
+        <button type="button" id="predict">Prédire</button>
+    </form>
+
+    <script>
+        document.getElementById('export').addEventListener('click', () => {
+            // Trigger the server to generate and download the CSV
+            window.location.href = '/export';
+        });
+
+        document.getElementById('predict').addEventListener('click', () => {
+            // Trigger the prediction endpoint
+            const form = document.getElementById('symptomForm');
+            form.action = '/predict';
+            form.method = 'POST';
+            form.submit();
+        });
+    </script>
+</body>
+</html>

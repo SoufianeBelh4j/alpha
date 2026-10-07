@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maladies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: separate;
+            border-spacing: 15px;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Couleurs pour les boutons */
+        .speciality-button {
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .speciality-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-general { background-color: #007BFF; }
+        .btn-cardiology { background-color: #28A745; }
+        .btn-neurology { background-color: #17A2B8; }
+        .btn-oncology { background-color: #FFC107; color: #333; }
+        .btn-pneumology { background-color: #6C757D; }
+        .btn-dermatology { background-color: #DC3545; }
+        .btn-nephrology { background-color: #6610F2; }
+        .btn-gastro { background-color: #E83E8C; }
+        .btn-endo { background-color: #20C997; }
+    </style>
+</head>
+<body>
+    <h2>Choisissez le type d'analyse</h2>
+    <table>
+        <tr>
+            <td>
+                <a href="/symptom">
+                    <button class="speciality-button btn-general">Analyse avec les attributs</button>
+                </a>
+            </td>
+            <td>
+                <a href="/symb">
+                    <button class="speciality-button btn-cardiology">Analyse avec les symptomes</button>
+                </a>
+            </td>
+            <td>
+                <a href="/symc">
+                    <button class="speciality-button btn-neurology">Analyse avec les images</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
